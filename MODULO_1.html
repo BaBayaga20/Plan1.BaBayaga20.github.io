@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Simulación Modulo 1</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <style>
+
+    .hidden { display: none; }  
+  
+    h4 {
+    text-align: center;
+    font-size: 30px;
+    }
+
+    /* Imagen de fondo con opacidad independiente */
+    body::before {
+      content: "";
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-image: url('imgs/UNAM.jpg');
+      background-repeat: no-repeat;
+      background-position: center center;
+      background-size: contain;
+      opacity: 0.1;   /* ajusta la opacidad solo de la imagen */
+      z-index: -1;    /* detrás de todo el contenido */
+    }
+
+  </style>
+
+
+</head>
+<body class="bg-light">
+
+  <div class="container py-5">
+    <!-- Pantalla Inicial -->
+    <div id="inicio" class="text-center">
+      <h1 class="mb-3">Simulación: Fudamentos de la planificación estratégica </h1>
+      <p class="lead"> 
+        El objetivo de este simulador es guiar al estudiante en el aprendizaje de los conceptos básicos para iniciarse en el campo de la planificación estrategica.
+        <br>
+        A través de ejemplos prácticos y un enfoque paso a paso, el usuario podrá afianzar los conocimientos de cada sección teórica. Para ello, se recomienda que 
+        desarrolle por cuenta propia una situación ficticia que le permita comprender mejor los conceptos, 
+        apoyándose en los diferentes ejemplos que aparecen en las diversas secciones de la simulación.
+      </p>
+      <br>
+      <button class="btn btn-primary btn-lg" onclick="mostrarPaso(1)">Iniciar Simulación</button>
+    </div>
+
+    <!-- Paso 1: Misión y Visión -->
+    <div id="paso1" class="hidden">
+      <h3>Paso 1: Define tu misión y visión</h3>
+      <form id="formMV">
+        <label class="form-label">
+            La Misión y la Visión son cruciales en la planificación estratégica porque definen el punto de partida y el destino, respectivamente. 
+            Sobre esta base, se construyen los objetivos, estrategias y planes de acción que haran realidad la Visión.
+        </label>
+        <div class="mb-3">
+          <br>
+          <label class="form-label"> <h4> Misión </h4>
+            <strong>
+              Ejemplo:
+            </strong>
+            Fomentar un entorno de aprendizaje innovador que utilice las tecnologías emergentes no como un fin, 
+            sino como un recurso fundamental para hacer el aprendizaje más relevante, colaborativo y 
+            conectado con la realidad del siglo XXI, asegurando que nuestros estudiantes sean aprendices competentes y seguros.
+          </label>
+          <textarea class="form-control" id="mision" required></textarea>
+        </div>
+        <div class="mb-3">
+          <br>
+          <label class="form-label"> <h4> Visión </h4> 
+            <strong>
+              Ejemplo:
+            </strong>
+            Soñamos con una experiencia educativa donde la tecnología amplifique lo mejor del potencial humano. 
+            Un espacio donde los estudiantes no solo consuman información, sino que creen sabiduría; 
+            no solo usen herramientas, sino que inventen soluciones; y no solo se conecten a redes, 
+            sino que construyan comunidad.
+          </label>
+          <textarea class="form-control" id="vision" required></textarea>
+        </div>
+        <button type="submit" class="btn btn-success">Siguiente</button>
+      </form>
+    </div>
+
+    <!-- Paso 2: Valores -->
+    <div id="paso2" class="hidden">
+      <h3>Paso 2: Considera tus valores</h3>
+      <form id="formValores">
+        <div class="mb-3">
+          <label class="form-label">
+            Los valores son principios fundamentales que guían el comportamiento, las decisiones y la cultura de una organización. 
+            En la planificación estratégica, los valores ayudan a definir qué comportamientos se consideran aceptables dentro del equipo o la empresa.
+            <br>
+            <br>
+            <strong>Ejemplo:</strong>
+            Igualdad: Todos los miembros del grupo tienen los mismos derechos, sin ningún tipo de distinción o discriminación.
+            <br>
+          </label>
+          <textarea class="form-control" id="valores" required></textarea>
+        </div>
+        <button type="submit" class="btn btn-success mt-3">Siguiente</button>
+      </form>
+    </div>
+
+    <!-- Paso 3: Análisis FODA -->
+    <div id="paso3" class="hidden">
+      <h3>Paso 3: Clasifica elementos en tu FODA</h3>
+      <p>Sin un FODA, la planificación se basa en suposiciones o percepciones incompletas. 
+        El FODA obliga a mirarse al espejo de manera objetiva y estructurada.</p>
+      <br>
+      <form id="formFODA">
+        <div class="row">
+          <div class="col-md-6">
+            <h5>Fortalezas</h5>
+            <div class="mb-3">
+                <label class="form-label"> <strong> Ejemplo: </strong> Experiencia en innovación docente </label>
+                <textarea class="form-control" id="f1" required></textarea>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <h5>Debilidades</h5>
+            <div class="mb-3">
+                <label class="form-label"> <strong> Ejemplo: </strong> Baja asignación de presupuesto </label>
+                <textarea class="form-control" id="d1" required></textarea>
+            </div>
+          </div>
+        </div>
+        <div class="row mt-2">
+          <div class="col-md-6">
+            <h5>Oportunidades</h5>
+            <div class="mb-3">
+                <label class="form-label"> <strong> Ejemplo: </strong> Capacitación institucional en tecnologías emergentes.</label>
+                <textarea class="form-control" id="o1" required></textarea>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <h5>Amenazas</h5>
+            <div class="mb-3">
+                <label class="form-label"> <strong> Ejemplo: </strong> Alta deserción estudiantil </label>
+                <textarea class="form-control" id="a1" required></textarea>
+            </div>
+          </div>
+        </div>
+        <button type="submit" class="btn btn-success mt-3">Ver Resultado</button>
+      </form>
+    </div>
+
+    <!-- Resultado Final -->
+    <div id="resultado" class="hidden">
+      <h3>📊 Tu Plan Estratégico comienza con: </h3>
+      <div class="card mt-3">
+        <div class="card-body">
+          <h5 class="card-title">Misión</h5>
+          <p id="resMision"></p>
+          <h5 class="card-title">Visión</h5>
+          <p id="resVision"></p>
+          <h5 class="card-title">Valores</h5>
+          <p id="resValores"></p>
+          <h5 class="card-title">FODA</h5>
+          <div class="row">
+          <!-- Columna 1: Fortalezas y Debilidades -->
+            <div class="col-md-6">
+                <h6>Fortalezas</h6>
+                <p id="resF"></p>
+                <h6>Oportunidades</h6>
+                <p id="resO"></p>
+            </div>
+          <!-- Columna 2: Oportunidades y Amenazas -->
+            <div class="col-md-6">
+                <h6>Debilidades</h6>
+                <p id="resD"></p>
+                <h6>Amenazas</h6>
+                <p id="resA"></p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- Botón de Reinicio -->
+      <div class="mt-4">
+        <button class="btn btn-success" onclick="reiniciarSimulacion()">Reiniciar Simulación</button>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    let plan = { mision: "", vision: "", valores: "", f: "", d: "", o: "", a: "" };
+
+    function mostrarPaso(n) {
+      document.querySelectorAll(".container > div").forEach(div => div.classList.add("hidden"));
+      document.getElementById("paso" + n).classList.remove("hidden");
+    }
+
+    document.getElementById("formMV").addEventListener("submit", e => {
+      e.preventDefault();
+      plan.mision = document.getElementById("mision").value;
+      plan.vision = document.getElementById("vision").value;
+      mostrarPaso(2);
+    });
+
+    document.getElementById("formValores").addEventListener("submit", e => {
+      e.preventDefault();
+      plan.valores = document.getElementById("valores").value;
+      mostrarPaso(3);
+    });
+
+    document.getElementById("formFODA").addEventListener("submit", e => {
+      e.preventDefault();
+      plan.f = document.getElementById("f1").value;
+      plan.d = document.getElementById("d1").value;
+      plan.o = document.getElementById("o1").value;
+      plan.a = document.getElementById("a1").value;
+
+      // Mostrar resultados
+      document.getElementById("resMision").innerText = plan.mision;
+      document.getElementById("resVision").innerText = plan.vision;
+      document.getElementById("resValores").innerText = plan.valores;
+      document.getElementById("resF").innerText = plan.f;
+      document.getElementById("resD").innerText = plan.d;
+      document.getElementById("resO").innerText = plan.o;
+      document.getElementById("resA").innerText = plan.a;
+
+      document.querySelectorAll(".container > div").forEach(div => div.classList.add("hidden"));
+      document.getElementById("resultado").classList.remove("hidden");
+    });
+
+    // Función para reiniciar la simulación
+    function reiniciarSimulacion() {
+      // Limpiar todos los campos de entrada
+      document.getElementById("mision").value = "";
+      document.getElementById("vision").value = "";
+      document.getElementById("valores").value = "";
+      document.getElementById("f1").value = "";
+      document.getElementById("d1").value = "";
+      document.getElementById("o1").value = "";
+      document.getElementById("a1").value = "";
+      
+      // Reiniciar el objeto plan
+      plan = { mision: "", vision: "", valores: "", f: "", d: "", o: "", a: "" };
+      
+      // Volver a la pantalla inicial
+      document.querySelectorAll(".container > div").forEach(div => div.classList.add("hidden"));
+      document.getElementById("inicio").classList.remove("hidden");
+    }
+  </script>
+</body>
+</html>
